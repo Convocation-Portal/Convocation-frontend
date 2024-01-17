@@ -26,12 +26,7 @@ Thanks for submitting a pull request! Please provide enough information so that 
 
 **If relevant, did you update the documentation?**
 
-<!--Add link to Talawa-Docs.-->
-
-**Summary**
-
-<!-- Explain the **motivation** for making this change. What existing problem does the pull request solve? -->
-<!-- Try to link to an open issue for more information. -->
+<!--Write NA if not applicable-->
 
 **Does this PR introduce a breaking change?**
 

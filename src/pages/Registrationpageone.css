@@ -1,0 +1,165 @@
+.mainform{
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10vw;
+}
+.headline{
+    gap: 4px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: #363636;
+    font-family: Poppins;
+    font-size: 1.8vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 55vw;
+    border-radius: 14px;
+    background: rgba(231, 225, 178, 0.80);
+    margin-top: 5vh;
+    height: 7vh;
+}
+
+
+.userform{
+    margin-top: 4vw;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+    /* height: 80vh; */
+   
+}
+.userform label{
+    background-color: white;
+    position: absolute;
+    left: 1vw;
+    top:-1.3vh;
+    font-size: 1.2vw;
+    margin: 1vh;
+}
+.inpcon{
+    position: relative;
+    margin-top: 2vmax;
+}
+.userform .timestamp{
+    display: flex;
+}
+.selectopt{
+    margin-top: 1.3vw;
+    font-size: 1.4vw;
+}
+.selectopt select{
+    width: 24vw;
+    margin-top: 0.9vw;
+    font-size: 1.2vw;
+}
+
+.userform .inp{
+    width: 55vw;
+    height: 2.8vmax;
+    font-size: 1.2vmax;
+    padding: 0.4vw;
+    text-align: center; 
+}
+
+.formbuttons{
+    display: flex;
+    margin-top: 2vw;
+    gap: 10vw;
+    height: 3vw;
+    align-items: center;
+    /* justify-content: center; */
+}
+.formbuttons #nextbutton{
+    /* background-color: antiquewhite;
+    padding: 1.4vw;
+    width: 19vw;
+    height: 3vw;
+    font-size: 1vw; */
+    width: 9vw;
+    font-size: 1.1vw;
+    text-decoration: underline;
+    background-color:#03263C ;
+    color: white;
+    border: none;
+    border-radius: 0.3vw;
+height: 3.1vw;
+flex-shrink: 0;
+}
+
+.formbuttons #resetbutton{
+    width: 9vw;
+    font-size: 1.1vw;
+    text-decoration: underline;
+    background-color:white ;
+    color: #03263C;
+    border-radius: 0.3vw;
+height: 3.1vw;
+flex-shrink: 0;
+
+}
+
+@media (min-width:330px) and  (max-width:550px) {
+   
+}
+
+
+
+@media (min-width:330px) and  (max-width:550px) {
+    .userform label{
+        top:-1.0vh;
+
+    }
+}
+@media (min-width:650px) {
+    .userform label{
+        top:-2.2vh;
+    }
+
+}
+
+.userform input{
+    width: 261.096px;
+height: 46px;
+flex-shrink: 0;
+}
+
+.twodots{
+    margin-top: 4vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 42vw;
+    align-items: center;
+}
+
+.twodots img{
+    width: 4vw;
+    position:absolute;
+}
+
+.twodots .lineconnect{
+    width: 41vw;
+    height: 1vh;
+    background-color: black;
+}
+
+.twodots #imgone{
+    left: 0;
+}
+.twodots #imgtwo{
+    right: 0;
+}
+@media (min-width:330px) and  (max-width:550px) {
+   
+    .twodots .lineconnect{
+        width: 41vw;
+        height: 0.5vh;
+        background-color: black;
+    }
+}
+

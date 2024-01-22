@@ -9,26 +9,6 @@ import "./Header.css"
 const Header = () => {
     return (
         <>
-            
-                <div className='Header' >
-                            <div className='picicons'> 
-                                <img className='headingpic' src={headingpic} alt="" />
-                                    <div className='headingicons'>
-                                    <AiOutlineLinkedin />
-                                    <AiOutlineFacebook />
-                                    < LiaTwitterSquare/>
-                                    <FaInstagram/>
-                    
-                            </div>
-                        </div>
-                                <div  className='quicklinks' >
-                                    <a id='quicklinktext' href="">Home</a> 
-                                </div>
-                 </div>
-        
-
-
-
             <Outlet />
             {/*Outlet ke bina header ke niche wala nhi aayega mat htana*/}
         </>

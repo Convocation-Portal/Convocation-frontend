@@ -1,16 +1,6 @@
 import Login from "./Login";
 import Admin from "./Admin";
-import Register from "./Registerpageone";
 import Student from "./Student";
-import React from 'react'
-import Registerpageone from "./Registerpageone";
+import Register from "./Register";
 
-function index() {
-  return (
-    <div> <Registerpageone/>  </div>
-  )
-}
-
-export default index
-
-export { Login, Admin, Register, Student };
+export { Login, Admin, Student, Register };

@@ -4,7 +4,7 @@ import Registerpageone from "./Registerpageone";
 
 const Register = () => {
     const [input, setInput] = useState({});
-    const [page, setPage] = useState(true);
+    const [page, setPage] = useState(false);
 
     return (
         <>

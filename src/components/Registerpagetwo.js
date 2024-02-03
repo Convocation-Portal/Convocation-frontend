@@ -6,9 +6,11 @@ import { MdOutlineKey } from "react-icons/md";
 import useDriverPicker from "react-google-drive-picker";
 import { google_client_id, google_api_key } from "../constant";
 import { FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const Registerpagetwo = ({ set, input, setInput }) => {
+    const redirect = useNavigate();
     const [createPicker] = useDriverPicker();
     const config = {
         clientId: google_client_id,
@@ -23,6 +25,7 @@ const Registerpagetwo = ({ set, input, setInput }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         set(false);
+        redirect("/");
         setInput((t) => {
             return { ...t, input };
         });
@@ -201,7 +204,22 @@ const Registerpagetwo = ({ set, input, setInput }) => {
                                 <MdOutlineKey /> Register
                             </button>
 
-                            <button id="resetbutton">RESET</button>
+                            <button
+                                id="resetbutton"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setDetails({
+                                        capSize: "",
+                                        jacketSize: "",
+                                        dinner: false,
+                                        stay: false,
+                                        fee: "",
+                                        idProof: "",
+                                    });
+                                }}
+                            >
+                                RESET
+                            </button>
                         </div>
                     </form>
                 </div>

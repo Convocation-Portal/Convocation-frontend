@@ -7,7 +7,6 @@ import blackellipsenew from "../components/assets/blackellipsenew.JPEG";
 // eslint-disable-next-line react/prop-types
 const Registerpageone = ({ set, setInput }) => {
     const [detail, setDetail] = useState({
-        timestamp: "",
         email: "",
         nameeng: "",
         namehin: "",
@@ -15,12 +14,10 @@ const Registerpageone = ({ set, setInput }) => {
         program: "",
         department: "",
     });
-    const date = new Date().getFullYear();
 
     const resetHandler = (e) => {
         e.preventDefault();
         setDetail({
-            timestamp: "",
             email: "",
             nameeng: "",
             namehin: "",
@@ -32,7 +29,6 @@ const Registerpageone = ({ set, setInput }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         if (
-            !detail.timestamp ||
             !detail.email ||
             !detail.nameeng ||
             !detail.namehin ||
@@ -65,23 +61,6 @@ const Registerpageone = ({ set, setInput }) => {
 
                 <div className="userform">
                     <form>
-                        <div className="selectopt">
-                            <div>Timestamp</div>
-                            <select
-                                id="Timestamp"
-                                name="Timestamp"
-                                value={detail.timestamp}
-                                onChange={(e) => {
-                                    setDetail({
-                                        ...detail,
-                                        timestamp: e.target.value,
-                                    });
-                                }}
-                            >
-                                <option value="">Choose Timestamp</option>
-                                <option value={`${date}`}>{date}</option>
-                            </select>
-                        </div>
                         <div className="inpcon">
                             <label id="jaskaran" htmlFor="email">
                                 Email

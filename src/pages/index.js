@@ -1,6 +1,17 @@
 import Login from "./Login";
-import Admin from "./Admin";
-import Student from "./Student";
-import Register from "./Register";
+import MainRegister from "./MainRegister";
+import Home from "./Home";
+import ForgotPassword from "./ForgotPassword";
+import Success from "./Success";
+import Failure from "./Failure";
+import EmailVerify from "./EmailVerify";
 
-export { Login, Admin, Student, Register };
+export {
+    Login,
+    MainRegister,
+    Home,
+    ForgotPassword,
+    Success,
+    Failure,
+    EmailVerify,
+};

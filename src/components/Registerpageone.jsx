@@ -3,12 +3,14 @@ import { FaUser } from "react-icons/fa";
 import "../style/Registrationpageone.css";
 import blueellipsenew from "../components/assets/blueellipsenew.PNG";
 import blackellipsenew from "../components/assets/blackellipsenew.JPEG";
+import { useAuth } from "../store/Auth";
 
 // eslint-disable-next-line react/prop-types
 const Registerpageone = ({ set, setInput }) => {
+    const { user } = useAuth();
     const [detail, setDetail] = useState({
-        email: "",
-        nameeng: "",
+        email: user.email,
+        nameeng: user.name,
         namehin: "",
         rollnum: "",
         program: "",
@@ -18,8 +20,8 @@ const Registerpageone = ({ set, setInput }) => {
     const resetHandler = (e) => {
         e.preventDefault();
         setDetail({
-            email: "",
-            nameeng: "",
+            email: user.email,
+            nameeng: user.name,
             namehin: "",
             rollnum: "",
             program: "",
@@ -71,12 +73,7 @@ const Registerpageone = ({ set, setInput }) => {
                                 type="email"
                                 placeholder="type your email address"
                                 value={detail.email}
-                                onChange={(e) =>
-                                    setDetail({
-                                        ...detail,
-                                        email: e.target.value,
-                                    })
-                                }
+                                disabled={true}
                             />
                         </div>
                         <div className="inpcon">
@@ -87,12 +84,7 @@ const Registerpageone = ({ set, setInput }) => {
                                 placeholder="type your name is english"
                                 id="nameeng"
                                 value={detail.nameeng}
-                                onChange={(e) =>
-                                    setDetail({
-                                        ...detail,
-                                        nameeng: e.target.value,
-                                    })
-                                }
+                                disabled={true}
                             />
                         </div>
                         <div className="inpcon">

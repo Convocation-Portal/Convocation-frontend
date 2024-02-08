@@ -13,6 +13,7 @@ import {
 import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
+import { AuthProvider } from "./store/Auth";
 
 // create other routes as required
 const router = createBrowserRouter([
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <AuthProvider>
+            <RouterProvider router={router} />;
+        </AuthProvider>
+    );
 }
 
 export default App;

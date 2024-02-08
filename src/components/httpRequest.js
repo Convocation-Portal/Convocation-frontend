@@ -40,6 +40,7 @@ export const login = async (input, redirect) => {
     });
     const response = await res.json();
     if (res.status === 200) {
+        console.log(response);
         Cookies.set("token", response.authToken);
         redirect("/");
     }
@@ -61,7 +62,7 @@ export const register = async (detail, redirect) => {
     }
 };
 
-export const checkAuth = async (set, loading, redirect) => {
+export const checkAuth = async (set, loading, redirect, user) => {
     const token = Cookies.get("token");
     if (token) {
         const url = `${backend}/auth/me`;
@@ -73,12 +74,15 @@ export const checkAuth = async (set, loading, redirect) => {
         });
         if (res.status === 200) {
             const response = await res.json();
+            user(response);
             if (response.usertype === "ADMIN") {
                 set(true);
             }
         } else {
             redirect("/login");
         }
+    } else {
+        redirect("/login");
     }
     loading(false);
 };
@@ -130,6 +134,44 @@ export const fetchUserDetails = async (set, loading) => {
         set(response);
     }
     loading(false);
+};
+
+export const resendHandler = async (set) => {
+    const token = Cookies.get("token");
+    const url = `${backend}/otp/resend`;
+    const res = await fetch(url, {
+        method: "PATCH",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const response = await res.json();
+    if (res.status === 201) {
+        set(new Date().getTime() + 5 * 60 * 1000);
+        alert("Verification Email sent successfully");
+    } else {
+        alert(response.message);
+    }
+};
+
+export const verifyEmail = async (OTP, redirect) => {
+    const token = Cookies.get("token");
+    const url = `${backend}/otp/verify`;
+    const res = await fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify({ OTP }),
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    if (res.status === 201) {
+        redirect("/");
+    } else {
+        const response = await res.json();
+        alert(response.message);
+    }
 };
 
 // export const searchHandler = async (

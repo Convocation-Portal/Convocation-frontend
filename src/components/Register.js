@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Registerpagetwo from "./Registerpagetwo";
 import Registerpageone from "./Registerpageone";
+import Headline from "./Headline";
 
 const Register = () => {
     const [input, setInput] = useState({});
@@ -8,6 +9,7 @@ const Register = () => {
 
     return (
         <>
+            <Headline page={page} />
             {page ? (
                 <Registerpagetwo
                     set={setPage}

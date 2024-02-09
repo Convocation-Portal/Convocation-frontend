@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { resendHandler, verifyEmail } from "../components/httpRequest";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/Input";
+import classes from "../style/Login.module.css";
 
 const EmailVerify = () => {
     const [timer, setTimer] = useState(new Date().getTime() + 5 * 60 * 1000);
     const [second, setSecond] = useState(new Date().getTime());
-    const [otp, setOtp] = useState("");
+    const [input, setInput] = useState({ otp: "" });
     const redirect = useNavigate();
     useEffect(() => {
         setSecond(new Date().getTime());
@@ -21,35 +23,31 @@ const EmailVerify = () => {
     );
 
     return (
-        <div className="login-container">
+        <div className={classes.container}>
             <div>
                 <h1>Email verify</h1>
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        verifyEmail(otp, redirect);
+                        verifyEmail(input.otp, redirect);
                     }}
-                    className="login-form"
+                    className={classes.form}
                 >
-                    <div className="inpcon">
-                        <label htmlFor="OTP">OTP</label>
-                        <input
-                            className="inp"
-                            id="username"
-                            type="number"
-                            name="OTP"
-                            value={otp}
-                            onChange={(e) => setOtp(e.target.value)}
-                            placeholder="Type your OTP"
-                        />
-                    </div>
-                    <div className="formbuttons">
-                        <button id="submitbutton" type="submit">
+                    <Input
+                        label="OTP"
+                        name="otp"
+                        type="number"
+                        value={input.otp}
+                        set={setInput}
+                        placeholder="Type your OTP"
+                    />
+                    <div className={classes.formbuttons}>
+                        <button className={classes.submitbutton} type="submit">
                             Submit
                         </button>
                     </div>
-                    <div className="formbuttons">
-                        <div className="timer">
+                    <div className={classes.timer}>
+                        <div>
                             OTP is valid for{" "}
                             <span
                                 style={
@@ -60,14 +58,14 @@ const EmailVerify = () => {
                             >
                                 0{minutes}:{remainingSeconds < 10 ? "0" : ""}
                                 {remainingSeconds}
-                            </span>{" "}
-                            <span
-                                style={{ color: "blue", cursor: "pointer" }}
-                                onClick={resendHandler.bind(null, setTimer)}
-                            >
-                                resend OTP
                             </span>
                         </div>
+                        <span
+                            style={{ color: "blue", cursor: "pointer" }}
+                            onClick={resendHandler.bind(null, setTimer)}
+                        >
+                            resend OTP
+                        </span>
                     </div>
                 </form>
             </div>

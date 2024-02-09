@@ -1,22 +1,18 @@
 .Footer {
     background-color: #03263c;
-    /* position: fixed; */
-    /* margin-top: 10vw; */
-    bottom: 0;
     width: 100vw;
-    height: 4vw;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.FooterText {
+.Footer .FooterText {
     color: #fff;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
-    font-size: 1.5vw;
+    font-size: min(16px, 2vw);
     font-style: normal;
     font-weight: 600;
-    line-height: normal;
     text-align: center;
 }

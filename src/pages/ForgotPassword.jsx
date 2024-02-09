@@ -1,31 +1,36 @@
 import React, { useState } from "react";
 import { forgotPassword } from "../components/httpRequest";
+import Input from "../components/Input";
+import classes from "../style/Login.module.css";
 
 const ForgotPassword = () => {
-    const [email, setEmail] = useState("");
+    const [input, setInput] = useState({ email: "" });
+
     return (
-        <div className="login-container">
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    forgotPassword(email);
-                }}
-            >
-                <div className="inpcon">
-                    <label>Email</label>
-                    <input
+        <div className={classes.container}>
+            <div>
+                <form
+                    className={classes.form}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        forgotPassword(input.email);
+                    }}
+                >
+                    <Input
+                        label="Email"
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={input.email}
+                        set={setInput}
                         placeholder="Enter your email"
                     />
-                </div>
-                <div className="formbuttons">
-                    <button id="resetbutton" type="submit">
-                        Submit
-                    </button>
-                </div>
-            </form>
+
+                    <div className={classes.formbuttons}>
+                        <button className={classes.submitbutton} type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

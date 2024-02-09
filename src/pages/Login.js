@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { MdOutlineKey } from "react-icons/md";
-import "../style/Login.css";
+import style from "../style/Login.module.css";
 import { login } from "../components/httpRequest";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/Input";
 
 const Login = () => {
     const redirect = useNavigate();
@@ -10,14 +11,6 @@ const Login = () => {
         email: "",
         password: "",
     });
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -32,42 +25,33 @@ const Login = () => {
     };
 
     return (
-        <div className="login-container">
+        <div className={style.container}>
             <div>
                 <h1>Login</h1>
-                <form onSubmit={handleFormSubmit} className="login-form">
-                    <div className="inpcon">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            className="inp"
-                            id="username"
-                            type="text"
-                            name="email"
-                            placeholder="Type your email address"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                        />
-                    </div>
+                <form onSubmit={handleFormSubmit} className={style.form}>
+                    <Input
+                        label="Email"
+                        type="email"
+                        name="email"
+                        placeholder="Type your email address"
+                        value={formData.email}
+                        set={setFormData}
+                    />
+                    <Input
+                        label="Password"
+                        type="password"
+                        name="password"
+                        placeholder="Type your password"
+                        value={formData.password}
+                        set={setFormData}
+                    />
 
-                    <div className="inpcon">
-                        <label htmlFor="nameeng">Password</label>
-                        <input
-                            type="password"
-                            className="inp"
-                            id="password"
-                            name="password"
-                            placeholder="Type your password"
-                            value={formData.password}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-
-                    <div className="formbuttons">
-                        <button id="submitbutton" type="submit">
+                    <div className={style.formbuttons}>
+                        <button className={style.submitbutton} type="submit">
                             <MdOutlineKey /> Login
                         </button>
                         <button
-                            id="resetbutton"
+                            className={style.resetbutton}
                             type="button"
                             onClick={handleFormReset}
                         >

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { register } from "../components/httpRequest";
 import { MdOutlineKey } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/Input";
+import classes from "../style/Login.module.css";
 
 const MainRegister = () => {
     const redirect = useNavigate();
@@ -23,48 +25,40 @@ const MainRegister = () => {
         register(detail, redirect);
     };
     return (
-        <div className="login-container">
+        <div className={classes.container}>
             <div>
                 <h1>Register</h1>
-                <form onSubmit={submitHandler} className="login-form">
-                    <div className="inpcon">
-                        <label>Name</label>
-                        <input
-                            type="text"
-                            placeholder="Enter your Name"
-                            onChange={(e) =>
-                                setDetails({ ...detail, name: e.target.value })
-                            }
-                        />
-                    </div>
-                    <div className="inpcon">
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            placeholder="Enter your Email"
-                            onChange={(e) =>
-                                setDetails({ ...detail, email: e.target.value })
-                            }
-                        />
-                    </div>
-                    <div className="inpcon">
-                        <label>Password</label>
-                        <input
-                            type="password"
-                            placeholder="Enter your password"
-                            onChange={(e) =>
-                                setDetails({
-                                    ...detail,
-                                    password: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div className="formbuttons">
-                        <button id="submitbutton" type="submit">
+                <form onSubmit={submitHandler} className={classes.form}>
+                    <Input
+                        label="Name"
+                        type="text"
+                        name="name"
+                        placeholder="Enter your Name"
+                        value={detail.name}
+                        set={setDetails}
+                    />
+                    <Input
+                        label="Email"
+                        type="email"
+                        name="email"
+                        placeholder="Enter your Email"
+                        value={detail.email}
+                        set={setDetails}
+                    />
+                    <Input
+                        label="Password"
+                        type="password"
+                        name="password"
+                        placeholder="Enter your Password"
+                        value={detail.password}
+                        set={setDetails}
+                    />
+                    <div className={classes.formbuttons}>
+                        <button className={classes.submitbutton} type="submit">
                             <MdOutlineKey />
                             Register
                         </button>
+                        <button className={classes.resetbutton}>Reset</button>
                     </div>
                 </form>
             </div>

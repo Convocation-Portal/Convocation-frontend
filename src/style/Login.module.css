@@ -1,0 +1,64 @@
+.container {
+    max-height: fit-content;
+}
+
+.container > div {
+    margin: auto;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background: rgba(236, 231, 193, 0.25);
+    padding: 20px 50px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formbuttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+
+.submitbutton {
+    padding: min(10px, 2vw) min(20px, 3vw);
+    background-color: #03263c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: min(20px, 2vw);
+    border-radius: min(5px, 1.5vw);
+}
+.submitbutton svg {
+    vertical-align: middle;
+    margin-right: 0.5vw;
+}
+
+.resetbutton {
+    padding: min(10px, 2vw) min(20px, 3vw);
+    background-color: white;
+    color: #03263c;
+    border-radius: min(5px, 1.5vw);
+    font-size: min(20px, 2vw);
+}
+
+.uploadbutton {
+    padding: min(8px, 0.4vw) min(15px, 0.8vw);
+    margin: 10px auto;
+    border-color: gray;
+    border-radius: 5px;
+    font-size: min(16px, 1.7vw);
+}
+
+.timer {
+    display: flex;
+    gap: 10px;
+}

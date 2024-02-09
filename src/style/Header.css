@@ -1,147 +1,57 @@
-.Header{
-    background-color:  #631012;
-    height: 30vh;
+.Header {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: full;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-}
-.headingpic{
-    height: 20vh;
-    width: 90%;
-    margin-top: 4vh;
+    height: min(30vh, 30vw);
+    width: 100vw;
 }
 
-.picicons{
+.picicons {
+    background-color: #631012;
     display: flex;
-    
+    justify-content: space-around;
+    color: white;
+    align-items: center;
 }
-.headingicons{
-    /* background-color: aqua; */
-    color: aliceblue;
+.LOGO {
     display: flex;
     align-items: center;
-    font-size: 3vh;
 }
-.quicklinks{
+.LOGO h1 {
+    font-size: min(2.5rem, 2.5vw);
+    color: white;
+    font-weight: 500;
+    margin-left: 20px;
+}
+.LOGO div {
+    font-size: min(1.5rem, 1.5vw);
+    text-align: center;
+}
+.picicons img {
+    width: min(250px, 25vw);
+    height: min(250px, 25vw);
+    padding: min(50px, 2vw);
+    object-fit: cover;
+}
+
+.headingicons svg {
+    width: min(30px, 3vw);
+    height: min(30px, 3vw);
+}
+
+.quicklinks {
+    background-color: #03263c;
     display: flex;
-    background-color:  #03263C;
-    width: 100%;
-    height: 4vh;
-    border-bottom: 1px solid  #03263C;
+    justify-content: flex-end;
+    color: white;
+    padding: 5px;
+    font-size: min(16px, 1.7vw);
 }
-#quicklinktext{
-    color: #FFF;
-font-family: Poppins;
-font-size: 1.5vw;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-text-decoration: none;
-margin-left: 80vw;
-margin-top: 0.5vh;
+.quicklinks a {
+    text-decoration: none;
+    color: white;
 }
 
-
-
-@media (max-width:950px) {
-    .headingpic{
-        height: 15vh;
-        width: 80%;
-    }
-    
+.quicklinks a:visited {
+    color: white;
+    text-decoration: none;
 }
-
-@media (min-width: 520px) and  (max-width:650px) {
-    .headingpic{
-        height: 12vh;
-        width: 85%;
-        margin-left: 3vh;
-    }
-    .Header{
-        height: 20vh;
-    }
-    .headingicons{
-        font-size: 2.0vh;
-    }
-    
-    
-}
-
-
-
-@media only screen and (min-width: 650px) and (max-width: 820px){
-    .headingpic{
-        height: 16vh;
-        max-width: 80%;
-        margin-left: 5vh;
-    }
-    .Header{
-        height: 25vh;
-    }
-    
-    
-}
-
-@media only screen and (min-width: 300px) and (max-width: 400px){
-    .headingpic{
-        height: 10vh;
-        max-width: 85%;
-        margin-left: 2vh;
-    }
-    .headingicons{
-        font-size: 1.7vh;
-    }
-    .Header{
-        height: 16vh;
-    }
-    
-}
-
-@media only screen and (min-width: 400px) and (max-width: 520px){
-    .headingpic{
-        height: 10vh;
-        max-width: 80%;
-        margin-left: 2vh;
-        margin-top: 1vh;
-    }
-    .headingicons{
-        font-size: 1.9vh;
-    }
-    .Header{
-        height: 15vh;
-    }
-    .quicklinks{
-        height: 3vh;
-        transform: translateY(1px);
-    }
-    
-}
-
-@media (min-width:1000px){
-    .headingpic{
-        height: 16vh;
-        max-width: 60%;
-        margin-left: 33vh;
-        margin-top: 1vh;
-    }
-    .headingicons{
-        font-size: 2.4vh;
-    }
-    .Header{
-        height: 24vh;
-    }
-    .quicklinks{
-        height: 4vh;
-        /* transform: translateY(1px); */
-    }
-    #quicklinktext{
-        font-size: 1.9vh;
-       
-    }
-}
-

@@ -1,0 +1,28 @@
+.container {
+    width: 70vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#checkboxx {
+    align-self: flex-start;
+}
+
+.headingg {
+    width: 100%;
+    font-size: min(25px, 2.5vw);
+}
+
+.part p {
+    margin: 10px auto;
+    font-size: min(13px, 1.4vw);
+}

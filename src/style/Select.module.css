@@ -1,0 +1,10 @@
+.selectopt {
+    margin-top: 30px;
+    font-size: min(20px, 3vw);
+}
+
+.selectopt select {
+    width: min(250px, 50vw);
+    padding: 10px;
+    font-size: min(16px, 2vw);
+}

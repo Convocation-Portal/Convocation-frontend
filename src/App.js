@@ -22,7 +22,9 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Header />
-                <Outlet />
+                <div className="middle">
+                    <Outlet />
+                </div>
                 <Footer />
             </>
         ),
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
 function App() {
     return (
         <AuthProvider>
-            <RouterProvider router={router} />;
+            <RouterProvider router={router} />
         </AuthProvider>
     );
 }

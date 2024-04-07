@@ -5,6 +5,7 @@ import { useAuth } from "../store/Auth";
 import Input from "./Input";
 import Select from "./Select";
 import classes2 from "../style/Login.module.css";
+import { ErrorMessage } from "./httpRequest";
 
 const program = {
     BTech: "BTech",
@@ -55,11 +56,12 @@ const Registerpageone = ({ set, setInput }) => {
             !detail.rollnum ||
             !detail.program
         ) {
-            alert("Please fill all the fields");
+            // alert("Please fill all the fields");
+            ErrorMessage("Please fill all the fields");
             return;
         }
         if (detail.program !== "BArch" && !detail.department) {
-            alert("Please fill all the fields");
+            ErrorMessage("Please fill all the fields");
             return;
         }
         set(true);

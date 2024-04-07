@@ -6,9 +6,10 @@ import Upload from "./Upload";
 import Checkbox from "./Checkbox";
 import classes from "../style/Register.module.css";
 import classes2 from "../style/Login.module.css";
+import { ErrorMessage, Registermain } from "./httpRequest";
 
 // eslint-disable-next-line react/prop-types
-const Registerpagetwo = ({ set, input, setInput }) => {
+const Registerpagetwo = ({ input }) => {
     const redirect = useNavigate();
 
     const [details, setDetails] = useState({
@@ -22,11 +23,16 @@ const Registerpagetwo = ({ set, input, setInput }) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        set(false);
-        redirect("/");
-        setInput((t) => {
-            return { ...t, input };
-        });
+        if (
+            !details.capSize ||
+            !details.jacketSize ||
+            !details.fee ||
+            !details.idProof
+        ) {
+            ErrorMessage("Please fill all the fields");
+            return;
+        }
+        Registermain(input, details, redirect);
     };
 
     const resetHandler = (e) => {
@@ -52,10 +58,10 @@ const Registerpagetwo = ({ set, input, setInput }) => {
                             </div>
 
                             <Input
-                                name="capsize"
+                                name="capSize"
                                 label="Himachali Cap-Size no."
                                 placeholder="type your cap size"
-                                type="No"
+                                type="number"
                                 value={details.capSize}
                                 set={setDetails}
                             />
@@ -63,7 +69,7 @@ const Registerpagetwo = ({ set, input, setInput }) => {
                                 name="jacketSize"
                                 label="Himachali Jacket-Size No."
                                 placeholder="type your jacket size"
-                                type="text"
+                                type="number"
                                 value={details.jacketSize}
                                 set={setDetails}
                             />

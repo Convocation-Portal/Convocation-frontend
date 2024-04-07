@@ -1,6 +1,8 @@
 //installed eslint. just run this in terminal "npm run lint"
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
     Login,
     MainRegister,
@@ -14,6 +16,7 @@ import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./store/Auth";
+import { StudentProvider } from "./store/Students";
 
 // create other routes as required
 const router = createBrowserRouter([
@@ -43,7 +46,10 @@ const router = createBrowserRouter([
 function App() {
     return (
         <AuthProvider>
-            <RouterProvider router={router} />
+            <StudentProvider>
+                <RouterProvider router={router} />
+                <ToastContainer />
+            </StudentProvider>
         </AuthProvider>
     );
 }

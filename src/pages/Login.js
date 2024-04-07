@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MdOutlineKey } from "react-icons/md";
 import style from "../style/Login.module.css";
 import { login } from "../components/httpRequest";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 
 const Login = () => {
@@ -45,7 +45,7 @@ const Login = () => {
                         value={formData.password}
                         set={setFormData}
                     />
-
+                    <Link to="/forgot-password">Forgot Password?</Link>
                     <div className={style.formbuttons}>
                         <button className={style.submitbutton} type="submit">
                             <MdOutlineKey /> Login

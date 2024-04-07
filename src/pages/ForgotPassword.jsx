@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { forgotPassword } from "../components/httpRequest";
 import Input from "../components/Input";
 import classes from "../style/Login.module.css";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
     const [input, setInput] = useState({ email: "" });
+    const redirect = useNavigate();
 
     return (
         <div className={classes.container}>
@@ -13,12 +15,13 @@ const ForgotPassword = () => {
                     className={classes.form}
                     onSubmit={(e) => {
                         e.preventDefault();
-                        forgotPassword(input.email);
+                        forgotPassword(input.email, redirect);
                     }}
                 >
                     <Input
                         label="Email"
                         type="email"
+                        name="email"
                         value={input.email}
                         set={setInput}
                         placeholder="Enter your email"

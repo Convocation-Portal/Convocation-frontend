@@ -99,8 +99,8 @@ export const checkAuth = async (set, loading, redirect, user) => {
     loading(false);
 };
 
-export const forgotPassword = async (email) => {
-    const url = `${backend}/user/password/forgot-password`;
+export const forgotPassword = async (email, redirect) => {
+    const url = `${backend}/query/forgot-password`;
     const res = await fetch(url, {
         method: "POST",
         body: JSON.stringify({ email }),
@@ -109,8 +109,14 @@ export const forgotPassword = async (email) => {
         },
     });
     const response = await res.json();
-    if (response.success) {
-        alert("Reset Password link is successfully sent to the email");
+    if (res.status == 200) {
+        toast.success("Reset Password link is successfully sent to the email", {
+            position: "bottom-right",
+            theme: "dark",
+            autoClose: 5000,
+        });
+        redirect("/reset-password");
+        Cookies.set("tempToken", response.authToken);
     } else {
         ErrorMessage(response.message);
     }
@@ -126,7 +132,7 @@ export const fetchUserDetails = async (set) => {
         },
     });
     const response = await res.json();
-    if (res.status === 200) {
+    if (res.status == 200) {
         set(response);
     } else {
         ErrorMessage(response.message);
@@ -145,10 +151,9 @@ export const resendHandler = async (set) => {
     const response = await res.json();
     if (res.status === 201) {
         set(new Date().getTime() + 5 * 60 * 1000);
-        // alert("Verification Email sent successfully");
         ErrorMessage("Verification Email sent successfully");
+        Cookies.remove("tempToken");
     } else {
-        // alert(response.message);
         ErrorMessage(response.message);
     }
 };
@@ -169,7 +174,6 @@ export const verifyEmail = async (OTP, redirect) => {
         redirect("/");
     } else {
         const response = await res.json();
-        // alert(response.message);
         ErrorMessage(response.message);
     }
 };
@@ -203,4 +207,72 @@ export const Registermain = async (input, details, redirect) => {
     } else {
         redirect("/failure");
     }
+};
+
+export const changePassword = async (input, redirect) => {
+    const token = Cookies.get("tempToken");
+    const url = `${backend}/query/set-Password`;
+    const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(input),
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const response = await res.json();
+    if (res.status == 200) {
+        toast.success("Password Changed Successfully", {
+            position: "bottom-right",
+            theme: "dark",
+            autoClose: 5000,
+        });
+        Cookies.set("token", token);
+        Cookies.remove("tempToken");
+        redirect("/");
+    } else {
+        ErrorMessage(response.message);
+    }
+};
+
+export const resentOTP = async ( set) => {
+    const url = `${backend}/query/forgot-password`;
+    const token = Cookies.get("tempToken");
+
+    const res1 = await fetch(`${backend}/auth/me`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const response1 = await res1.json();
+    if(res1.status ===200){
+        const res = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ email: response1.email }),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+        });
+        const response = await res.json();
+        if (res.status == 200) {
+            toast.success(
+                `Reset Password link is successfully sent to ${response1.email}`,
+                {
+                    position: "bottom-right",
+                    theme: "dark",
+                    autoClose: 5000,
+                }
+            );
+            Cookies.set("tempToken", response.authToken);
+            set(new Date().getTime() + 5 * 60 * 1000);
+        } else {
+            ErrorMessage(response.message);
+        }
+    }else {
+        ErrorMessage(response1.message);
+    }
+    
 };

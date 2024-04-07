@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "../components/httpRequest";
+import { ErrorMessage, register } from "../components/httpRequest";
 import { MdOutlineKey } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
@@ -19,7 +19,7 @@ const MainRegister = () => {
             detail.email === "" ||
             detail.password === ""
         ) {
-            alert("Please fill all the fields");
+            ErrorMessage("Please fill all the fields");
             return;
         }
         register(detail, redirect);

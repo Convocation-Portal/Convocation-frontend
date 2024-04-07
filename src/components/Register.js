@@ -11,11 +11,7 @@ const Register = () => {
         <>
             <Headline page={page} />
             {page ? (
-                <Registerpagetwo
-                    set={setPage}
-                    input={input}
-                    setInput={setInput}
-                />
+                <Registerpagetwo input={input} />
             ) : (
                 <Registerpageone
                     set={setPage}

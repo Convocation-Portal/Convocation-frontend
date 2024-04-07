@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import { backend } from "../constant";
+import { toast } from "react-toastify";
 
 //Backend Api urls
 // /auth/signup ->
@@ -29,6 +30,14 @@ import { backend } from "../constant";
 
 // /user/password/reset-password/:token ->
 
+export const ErrorMessage = (message) => {
+    toast.error(message, {
+        position: "bottom-right",
+        theme: "dark",
+        autoClose: 5000,
+    });
+};
+
 export const login = async (input, redirect) => {
     const url = `${backend}/auth/login`;
     const res = await fetch(url, {
@@ -40,9 +49,10 @@ export const login = async (input, redirect) => {
     });
     const response = await res.json();
     if (res.status === 200) {
-        console.log(response);
         Cookies.set("token", response.authToken);
         redirect("/");
+    } else {
+        ErrorMessage(response.message);
     }
 };
 
@@ -55,10 +65,12 @@ export const register = async (detail, redirect) => {
             "Content-Type": "application/json",
         },
     });
+    const response = await res.json();
     if (res.status === 201) {
-        const response = await res.json();
         Cookies.set("token", response.authToken);
         redirect("/verify-email");
+    } else {
+        ErrorMessage(response.message);
     }
 };
 
@@ -87,24 +99,6 @@ export const checkAuth = async (set, loading, redirect, user) => {
     loading(false);
 };
 
-export const convocationRegistration = async (input, redirect) => {
-    const token = Cookies.get("token");
-    const url = `${backend}/convocation-registration`;
-    const res = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(input),
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-    });
-    if (res.status === 201) {
-        redirect("/success");
-    } else {
-        redirect("/failure");
-    }
-};
-
 export const forgotPassword = async (email) => {
     const url = `${backend}/user/password/forgot-password`;
     const res = await fetch(url, {
@@ -117,10 +111,12 @@ export const forgotPassword = async (email) => {
     const response = await res.json();
     if (response.success) {
         alert("Reset Password link is successfully sent to the email");
+    } else {
+        ErrorMessage(response.message);
     }
 };
 
-export const fetchUserDetails = async (set, loading) => {
+export const fetchUserDetails = async (set) => {
     const token = Cookies.get("token");
     const url = `${backend}/admin/student-details`;
     const res = await fetch(url, {
@@ -129,11 +125,12 @@ export const fetchUserDetails = async (set, loading) => {
             Authorization: `Bearer ${token}`,
         },
     });
+    const response = await res.json();
     if (res.status === 200) {
-        const response = await res.json();
         set(response);
+    } else {
+        ErrorMessage(response.message);
     }
-    loading(false);
 };
 
 export const resendHandler = async (set) => {
@@ -148,9 +145,11 @@ export const resendHandler = async (set) => {
     const response = await res.json();
     if (res.status === 201) {
         set(new Date().getTime() + 5 * 60 * 1000);
-        alert("Verification Email sent successfully");
+        // alert("Verification Email sent successfully");
+        ErrorMessage("Verification Email sent successfully");
     } else {
-        alert(response.message);
+        // alert(response.message);
+        ErrorMessage(response.message);
     }
 };
 
@@ -170,13 +169,38 @@ export const verifyEmail = async (OTP, redirect) => {
         redirect("/");
     } else {
         const response = await res.json();
-        alert(response.message);
+        // alert(response.message);
+        ErrorMessage(response.message);
     }
 };
 
-// export const searchHandler = async (
-//     input,
-//     setProgram,
-//     setDepartment,
-//     setRoll
-// ) => {};
+export const Registermain = async (input, details, redirect) => {
+    const token = Cookies.get("token");
+    const object = {
+        name: input.nameeng,
+        email: input.email,
+        rollno: input.rollnum.toLocaleLowerCase(),
+        department: input.department,
+        program: input.program,
+        capSize: parseInt(details.capSize),
+        jacketSize: parseInt(details.jacketSize),
+        hostelStay: details.stay,
+        hostelMeal: details.dinner,
+        feeReceipt: details.fee,
+        idProof: details.idProof,
+    };
+    const url = `${backend}/convocation-registration`;
+    const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(object),
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    if (res.status === 201) {
+        redirect("/success");
+    } else {
+        redirect("/failure");
+    }
+};

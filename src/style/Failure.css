@@ -1,6 +1,6 @@
 .MainContainer{
     background-color: rgb(255, 255, 255);
-    height: 100vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@
 
 .Content{
     /* display: flex; */
-    height: 20vmax;
+    height: 25vmax;
     /* background-color: brown; */
     background-color: rgba(236, 231, 193, 0.5);
     width: 50vw;

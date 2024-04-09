@@ -72,6 +72,21 @@ const Admin = () => {
                             </div>
                             <div>{data.hostelStay ? "YES" : "NO"}</div>
                         </div>
+                        <div id="entity">
+                            <div>
+                            Photo Copy of Fee Deposited Through SBI Collect 
+                            </div>
+                           <div> <a> click here </a> </div>
+                        </div>
+                        <div id="entity">
+                            <div>
+                                Photograph of ID card 
+                            </div>
+                            <div>
+                             <a> click here 
+                             </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

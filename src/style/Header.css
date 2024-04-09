@@ -1,7 +1,30 @@
+
+@media screen and ( max-width : 1300px) {
+      .Header {
+          height: 30vmax;
+      }
+
+    };
+
+    @media screen and ( min-width : 1200px) and (max-width : 1300px) {
+        .Header {
+            height: 39vmax;
+        }
+  
+      };
+
+
+
+
+
+
+
+
+
 .Header {
     display: flex;
     flex-direction: column;
-    height: min(30vh, 30vw);
+    height: 30vmax;
     width: 100vw;
 }
 
@@ -56,3 +79,6 @@
     color: white;
     text-decoration: none;
 }
+
+
+

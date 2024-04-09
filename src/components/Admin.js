@@ -7,7 +7,6 @@ const Admin = () => {
     const students = useStudent();
     const [data, setData] = useState({});
     const [search, setSearch] = useState("");
-
     const submitHandler = (e) => {
         e.preventDefault();
         for (let i = 0; i < students.length; i++) {
@@ -76,14 +75,14 @@ const Admin = () => {
                             <div>
                             Photo Copy of Fee Deposited Through SBI Collect 
                             </div>
-                           <div> <a> click here </a> </div>
+                           <div> <a href={data.feeReceipt}> click here </a> </div>
                         </div>
                         <div id="entity">
                             <div>
                                 Photograph of ID card 
                             </div>
                             <div>
-                             <a> click here 
+                             <a href={data.idProof}> click here 
                              </a>
                             </div>
                         </div>

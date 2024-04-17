@@ -32,6 +32,8 @@
 
 .Content .successtext{
     font-size: larger;
+    text-align: center;
+
 }
 
 @media screen and ( max-width : 800px) {

@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
+import { 
     Login,
     MainRegister,
     Home,
@@ -17,6 +17,8 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./store/Auth";
 import { StudentProvider } from "./store/Students";
+import Summary from "./pages/Summary";
+
 
 const router = createBrowserRouter([
     {
@@ -34,8 +36,9 @@ const router = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: "/register", element: <MainRegister /> },
             { path: "/forgot-password", element: <ForgotPassword /> },
-            {path: "/reset-password", element: <ResetPassword />},
+            { path: "/reset-password", element: <ResetPassword />},
             { path: "/login", element: <Login /> },
+            { path: "/summary" , element: <Summary/>  },
             { path: "/success", element: <Success /> },
             { path: "/failure", element: <Failure /> },
             { path: "/verify-email", element: <EmailVerify /> },

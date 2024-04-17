@@ -1,19 +1,33 @@
 
-@media screen and ( max-width : 1300px) {
+/* @media screen and ( max-width : 1300px) {
       .Header {
           height: 30vmax;
-      }
+      } */
 
-    };
+    /* }; */
 
-    @media screen and ( min-width : 1200px) and (max-width : 1300px) {
+    @media screen and ( min-width : 900px) and (max-width : 1050px) {
         .Header {
-            height: 39vmax;
+            height: 30vw;
+          
         }
   
       };
-
-
+      @media screen and ( min-width : 400px) and (max-width : 500px) {
+        .Header {
+            height: 100vw;
+          
+        }
+  
+      };
+/* 
+      @media screen and (max-width: 500px) {
+        .Header {
+            height: 15vmax;
+            margin-bottom: -10vw !important; /* Add !important to override any conflicting styles */
+        /* } */
+    /* } */ */
+    
 
 
 
@@ -24,7 +38,7 @@
 .Header {
     display: flex;
     flex-direction: column;
-    height: 30vmax;
+    height: 20vw;
     width: 100vw;
 }
 
@@ -71,6 +85,7 @@
     font-size: min(16px, 1.7vw);
 }
 .quicklinks a {
+    margin-inline:3px;
     text-decoration: none;
     color: white;
 }

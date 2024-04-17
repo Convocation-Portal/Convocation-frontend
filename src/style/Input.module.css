@@ -8,7 +8,34 @@
     font-size: min(16px, 2vw);
     text-align: center;
     border-radius: 6px;
-    padding: 15px;
+    padding: 19px;
+
+}
+.inp:-webkit-autofill,
+.inp:-webkit-autofill:hover,
+.inp:-webkit-autofill:focus {
+    border: 1px solid #000;
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+@media screen   and ( max-width: 500px) {
+    .inp {
+        padding: 12px;
+    
+    }
+}
+@media screen   and  (min-width: 500px) and ( max-width: 750px) {
+    .inp {
+        padding: 16px;
+    }
+    .inpcon label{
+        height: 15px;
+        font-size: 12px;
+    }
+
 }
 
 .inpcon label {

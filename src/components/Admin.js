@@ -17,7 +17,6 @@ const Admin = () => {
         }
         ErrorMessage("Student not found");
     };
-
     return (
         <div className="MainContainerrr">
             <div className="Formm">
@@ -38,6 +37,10 @@ const Admin = () => {
                     <div className="container">
                         <div id="entity">
                             <div>Name (English)</div>
+                            <div>{data.name}</div>
+                        </div>
+                        <div id="entity">
+                            <div>Name (Hindi)</div>
                             <div>{data.name}</div>
                         </div>
                         <div id="entity">

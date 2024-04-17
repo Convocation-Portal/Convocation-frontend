@@ -27,6 +27,19 @@
     /* transform: translateY(-50px); */
 
 }
+.summarytag {
+    text-decoration: none;
+    color: black;
+    
+}
+.summarybtn{
+    margin-left: 2px;
+    /* background-color: beige; */
+    position: relative;
+    /* transform: translateX(6.3rem); */
+    width: 140px;
+}
+
 
 .Formm button{
     margin-left: 5px;

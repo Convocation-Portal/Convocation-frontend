@@ -30,17 +30,19 @@ const Admin = () => {
                         }}
                     />
                     <button type="submit">Search</button>
+                    <button className="summarybtn" >
+
+<a  className="summarytag" href="./summary" > Registered Students </a>
+</button>
+             
                 </form>
+               
             </div>
             {Object.keys(data).length != 0 && (
                 <div className="StudentDetailsContainer">
                     <div className="container">
                         <div id="entity">
                             <div>Name (English)</div>
-                            <div>{data.name}</div>
-                        </div>
-                        <div id="entity">
-                            <div>Name (Hindi)</div>
                             <div>{data.name}</div>
                         </div>
                         <div id="entity">
